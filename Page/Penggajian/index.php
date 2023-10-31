@@ -57,7 +57,7 @@ include "../../Template/Navbar.php";
                             <td><?= $data["Bulan"] ?></td>
                             <td><?= $data["Gaji_Bayar"] ?></td>
                             <td>
-                                <a href="#" class="btn btn-outline-dark">Edit Data</a>
+                                <a href="edit.php?id=<?php echo $data['ID'] ?>" class="btn btn-outline-dark">Edit Data</a>
                                 <a href="../../Action/hapusdatapenggajian.php?ID=<?php echo $data['ID'] ?>" class="btn btn-outline-dark">Hapus Data</a>
                             </td>
                         </tr>

@@ -5,7 +5,7 @@ require '../../Config/koneksi.php';
 
 <!doctype html>
 <html lang="en">
-    
+
 <?php
 include "../../Template/Head.php";
 ?>
@@ -46,17 +46,17 @@ include "../../Template/Navbar.php";
 
                         <?php
                         $no = 1;
-                        $karyawan = $koneksi->query("SELECT * FROM karyawan AS k LEFT JOIN bagian AS b ON k.BagianID = b.ID");
+                        $karyawan = $koneksi->query("SELECT k.NIK, k.Nama AS NamaKaryawan, k.Tanggal_Mulai, k.Gaji_Pokok, k.Status_Karyawan, b.Nama AS Jabatan FROM karyawan AS k LEFT JOIN bagian AS b ON k.BagianID = b.ID");
                         while ($data = $karyawan->fetch_array()) {
                         ?>
                             <tr>
                                 <td><?= $no++ ?></td>
                                 <td><?= $data["NIK"] ?></td>
-                                <td><?= $data["Nama"] ?></td>
+                                <td><?= $data["NamaKaryawan"] ?></td>
                                 <td><?= $data["Tanggal_Mulai"] ?></td>
                                 <td><?= $data["Gaji_Pokok"] ?></td>
                                 <td><?= $data["Status_Karyawan"] ?></td>
-                                <td><?= $data["Nama"] ?></td>
+                                <td><?= $data["Jabatan"] ?></td>
                                 <td>
                                     <a href="edit.php?NIK=<?php echo $data['NIK'] ?>" class="btn btn-outline-dark">Edit Data</a>
                                     <a href="../../Action/hapusdatakaryawan.php?NIK=<?php echo $data['NIK'] ?>" class="btn btn-outline-dark">Hapus Data</a>

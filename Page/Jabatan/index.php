@@ -20,10 +20,16 @@ include "../../Template/Navbar.php";
 <body>
     <h1 style="margin-top: 20px; text-align:center;">Data Jabatan</h1>
     <br>
+
     <!--card-->
     <section id="card">
         <div class="container">
-            <table class="table" id="example" >
+
+            <div class="card-header">
+                <a href="<?= base_url('Page/Jabatan/tambah.php') ?>" class="btn-tambahdata">Tambah Data</a>
+            </div>
+
+            <table class="table" id="example">
                 <thead class="table-dark">
                     <tr>
                         <th scope="col">No</th>
@@ -33,26 +39,26 @@ include "../../Template/Navbar.php";
                     </tr>
                 </thead>
                 <tbody>
-                    
+
                     <?php
-                        $no = 1;
-                        $karyawan = $koneksi -> query("SELECT * FROM bagian");
-                        while ($data = $karyawan -> fetch_array()) {
+                    $no = 1;
+                    $karyawan = $koneksi->query("SELECT * FROM bagian");
+                    while ($data = $karyawan->fetch_array()) {
                     ?>
 
-                    <tr>
-                        <td><?= $no++ ?></td>
-                        <td><?= $data["ID"] ?></td>
-                        <td><?= $data["Nama"] ?></td>
-                        <td>
-                            <a href="#" class="btn btn-outline-dark">Edit Data</a>
-                            <a href="../../Action/hapusdatajabatan.php?ID=<?php echo $data['ID'] ?>" class="btn btn-outline-dark">Hapus Data</a>
-                        </td>
-                    </tr>
+                        <tr>
+                            <td><?= $no++ ?></td>
+                            <td><?= $data["ID"] ?></td>
+                            <td><?= $data["Nama"] ?></td>
+                            <td>
+                                <a href="edit.php?ID=<?php echo $data['ID']?>" class="btn btn-outline-dark">Edit Data</a>
+                                <a href="../../Action/hapusdatajabatan.php?ID=<?php echo $data['ID'] ?>" class="btn btn-outline-dark">Hapus Data</a>
+                            </td>
+                        </tr>
                     <?php
-                        }
+                    }
                     ?>
-                    
+
                 </tbody>
             </table>
         </div>
